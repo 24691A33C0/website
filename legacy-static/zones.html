@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>De-Stress Zones — Dynamic Stress Buster Cafe</title>
+  <meta name="description" content="Discover our 6 purpose-built sensory environments: ASMR Cocoon Pods, Zen Terrarium, Board Game Attic, Tactile Release Studio, Therapy Pet Lounge, and Deep Work Nook.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .zone-detail-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-medium);
+      overflow: hidden;
+      margin-bottom: 3.5rem;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      transition: all var(--transition-smooth);
+    }
+    .zone-detail-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-amber);
+    }
+    .zone-detail-img-wrap {
+      position: relative;
+      min-height: 380px;
+    }
+    .zone-detail-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .zone-detail-body {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sensory-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 1.5rem 0;
+      background: var(--bg-surface);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+    }
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .spec-label {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .spec-val {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 2px;
+    }
+    @media (max-width: 900px) {
+      .zone-detail-card {
+        grid-template-columns: 1fr;
+      }
+      .zone-detail-img-wrap {
+        height: 280px;
+      }
+      .zone-detail-body {
+        padding: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon-wrap">☕</div>
+          <div>
+            <h1 class="brand-title">Dynamic Stress Buster</h1>
+            <span class="brand-subtitle">Artisan Cafe & Sanctuary</span>
+          </div>
+        </a>
+
+        <nav aria-label="Primary Navigation">
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="menu.html" class="nav-link">Menu & Mood Matcher</a></li>
+            <li><a href="zones.html" class="nav-link active">De-Stress Zones</a></li>
+            <li><a href="events.html" class="nav-link">Events & Workshops</a></li>
+            <li><a href="reservations.html" class="nav-link">Reserve a Pod</a></li>
+            <li><a href="about.html" class="nav-link">Our Story</a></li>
+            <li><a href="contact.html" class="nav-link">Visit & Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn-icon theme-toggle-btn" aria-label="Toggle Theme">🌙</button>
+          <a href="reservations.html" class="btn btn-primary">Book Table</a>
+          <button class="btn-icon mobile-toggle">&#9776;</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 3.5rem; padding-bottom: 5rem;">
+    
+    <!-- Title Section -->
+    <div style="text-align: center; max-width: 780px; margin: 0 auto 3.5rem;">
+      <span class="section-eyebrow">Sensory Environmental Design</span>
+      <h2 class="section-title">Six Custom Sanctuaries Designed for Nervous System Recalibration</h2>
+      <p class="section-desc">
+        Different stress states require different neurological responses. Whether your mind craves total acoustic silence, tactile physical release, purring animal therapy, or biophilic plant immersion—there is a sanctuary crafted specifically for you.
+      </p>
+    </div>
+
+    <!-- Quick Zone Finder Filter Bar -->
+    <div style="background: var(--bg-surface); padding: 1.25rem 2rem; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.5rem; border: 1px solid var(--border-medium);">
+      <span style="font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 8px;">
+        <span>🧭</span> Jump to Sanctuary:
+      </span>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <a href="#zone-asmr" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.8rem;">🎧 ASMR Pods</a>
+        <a href="#zone-zen" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.8rem;">🌿 Zen Terrarium</a>
+        <a href="#zone-tactile" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.8rem;">🫧 Tactile Wall</a>
+        <a href="#zone-boardgames" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.8rem;">🎲 Board Game Attic</a>
+        <a href="#zone-pets" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.8rem;">🐾 Purrs Nook</a>
+        <a href="#zone-reading" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.8rem;">📖 Deep Reading</a>
+      </div>
+    </div>
+
+    <!-- ZONE 1: ASMR & Lofi Cocoon Pods -->
+    <article class="zone-detail-card" id="zone-asmr">
+      <div class="zone-detail-img-wrap">
+        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80" alt="Private ASMR & Lofi Pods">
+        <span class="zone-tag">Deep Acoustic Solitude</span>
+      </div>
+      <div class="zone-detail-body">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+            <h3 style="font-size: 1.6rem; font-weight: 800;">Private ASMR & Lofi Cocoon Pods</h3>
+            <span style="color: #10B981; font-size: 0.82rem; font-weight: 700;">● 4 Pods Available Today</span>
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem;">
+            Individual acoustically sealed wooden pods lined with sound-dampening acoustic felt. Features adjustable circadian warm amber lighting, plush zero-gravity recliners, a personal tea dock, and an interactive audio console with 12 handcrafted ASMR streams (wood crackle, keyboard taps, whispering rain, Japanese paper cutting).
+          </p>
+
+          <div class="sensory-specs-grid">
+            <div class="spec-item">
+              <span class="spec-label">Acoustic Level</span>
+              <span class="spec-val">Ultra-Quiet (&lt; 22 dB)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Lighting Vibe</span>
+              <span class="spec-val">1800K Dimmable Candlelight</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Recommended Duration</span>
+              <span class="spec-val">45 to 90 Minutes</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Included Perks</span>
+              <span class="spec-val">15lb Weighted Blanket & Diffuser</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <a href="reservations.html?zone=asmr" class="btn btn-primary">
+            Reserve an ASMR Pod ($12 / hr)
+          </a>
+          <button class="btn btn-secondary" onclick="showToast('🎧 Noise-isolation demo preview playing...'); window.soundEngine.play('zen');">
+            Listen to Pod Soundscape ♫
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ZONE 2: Zen Terrarium & Sound Garden -->
+    <article class="zone-detail-card" id="zone-zen">
+      <div class="zone-detail-img-wrap">
+        <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=900&q=80" alt="The Zen Terrarium & Sound Garden">
+        <span class="zone-tag">Biophilic Healing</span>
+      </div>
+      <div class="zone-detail-body">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+            <h3 style="font-size: 1.6rem; font-weight: 800;">The Zen Terrarium & Sound Garden</h3>
+            <span style="color: #10B981; font-size: 0.82rem; font-weight: 700;">● Walk-in Welcome</span>
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem;">
+            An indoor greenhouse oasis wrapped in living vertical moss walls, humidified mist gardens, sculpted bonsai, and smooth river-stone foot pathways. Sit by the trickling water fountain, order a ceremonial Uji matcha, and reconnect with nature without leaving the city.
+          </p>
+
+          <div class="sensory-specs-grid">
+            <div class="spec-item">
+              <span class="spec-label">Aroma Profile</span>
+              <span class="spec-val">Hinoki Cedar & Rain Petrichor</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Natural Sunlight</span>
+              <span class="spec-val">Filtered Glass Skylights</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Vibe Level</span>
+              <span class="spec-val">Peaceful & Reflective</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Special Equipment</span>
+              <span class="spec-val">Bose Noise-Canceling Headsets</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <a href="reservations.html?zone=zen" class="btn btn-primary">
+            Reserve Garden Table
+          </a>
+          <button class="btn btn-secondary" onclick="showToast('🌿 Water trickle soundscape loaded.'); window.soundEngine.play('rain');">
+            Preview Garden Atmosphere ♫
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ZONE 3: Tactile Release & Bubble Wall -->
+    <article class="zone-detail-card" id="zone-tactile">
+      <div class="zone-detail-img-wrap">
+        <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=900&q=80" alt="The Tactile Release Studio">
+        <span class="zone-tag">Kinesthetic Somatic Release</span>
+      </div>
+      <div class="zone-detail-body">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+            <h3 style="font-size: 1.6rem; font-weight: 800;">The Tactile Release & Bubble Wall</h3>
+            <span style="color: #10B981; font-size: 0.82rem; font-weight: 700;">● Open Access</span>
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem;">
+            When cognitive relaxation fails, somatic kinesthetic release succeeds. Pop endless sheets of heavy-gauge reusable bubble wrap, dig your fingers into heated kinetic sand basins, mold weighted therapeutic aroma dough, or release tension on our chalkboard scribble canvas.
+          </p>
+
+          <div class="sensory-specs-grid">
+            <div class="spec-item">
+              <span class="spec-label">Activity Type</span>
+              <span class="spec-val">Hands-On Tactile Fidgeting</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Stress Type</span>
+              <span class="spec-val">Restless Energy & Physical Frustration</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Interactive Perks</span>
+              <span class="spec-val">Kinetic Sand, Putty, Bubble Wall</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Hygiene</span>
+              <span class="spec-val">Medical UV Sanitized Hourly</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="document.getElementById('openStressModalBtn').click();">
+            Try Digital Bubble Wrap Now 🫧
+          </button>
+          <a href="reservations.html?zone=tactile" class="btn btn-secondary">
+            Visit Studio
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ZONE 4: Board Games & Puzzle Attic -->
+    <article class="zone-detail-card" id="zone-boardgames">
+      <div class="zone-detail-img-wrap">
+        <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=900&q=80" alt="Board Games & Puzzle Attic">
+        <span class="zone-tag">Analog Play Therapy</span>
+      </div>
+      <div class="zone-detail-body">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+            <h3 style="font-size: 1.6rem; font-weight: 800;">The Board Game & Puzzle Attic</h3>
+            <span style="color: #F59E0B; font-size: 0.82rem; font-weight: 700;">● Popular on Evenings</span>
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem;">
+            Over 200 handpicked board games, handcrafted wooden chess sets, massive 1,000-piece community puzzle tables, and cozy floor cushions on vintage Persian rugs. Phones are strictly stowed in vintage lockboxes so you can immerse in laughter and camaraderie.
+          </p>
+
+          <div class="sensory-specs-grid">
+            <div class="spec-item">
+              <span class="spec-label">Game Collection</span>
+              <span class="spec-val">200+ Games (Co-op & Strategy)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Group Size</span>
+              <span class="spec-val">1 to 8 Players per Table</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Rule Policy</span>
+              <span class="spec-val">Digital Detox (No Screens)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Game Sommelier</span>
+              <span class="spec-val">Staff teaches rules in 2 mins</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <a href="reservations.html?zone=boardgames" class="btn btn-primary">
+            Reserve Game Table
+          </a>
+          <a href="events.html" class="btn btn-secondary">
+            View Weekly Tournaments
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ZONE 5: Paws & Purrs Therapy Nook -->
+    <article class="zone-detail-card" id="zone-pets">
+      <div class="zone-detail-img-wrap">
+        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=900&q=80" alt="Therapy Cat Lounge">
+        <span class="zone-tag">Feline Biotherapy</span>
+      </div>
+      <div class="zone-detail-body">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+            <h3 style="font-size: 1.6rem; font-weight: 800;">The Paws & Purrs Therapy Nook</h3>
+            <span style="color: #10B981; font-size: 0.82rem; font-weight: 700;">● 8 Resident Therapy Cats</span>
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem;">
+            A separate, HEPA-filtered enclosed lounge housing our beloved rescue cats trained as emotional support animals. A cat’s purr vibrates between 20–140 Hz—a medically recognized frequency that lowers arterial blood pressure and accelerates bone and tissue healing.
+          </p>
+
+          <div class="sensory-specs-grid">
+            <div class="spec-item">
+              <span class="spec-label">Air Quality</span>
+              <span class="spec-val">Hospital Grade H13 HEPA Filter</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Animal Welfare</span>
+              <span class="spec-val">Certified Rescue & Vet Supervised</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Cat Treats</span>
+              <span class="spec-val">Organic Salmon Bites Provided</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Safety</span>
+              <span class="spec-val">Ages 12+ / Gentle Gentle Only</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <a href="reservations.html?zone=pets" class="btn btn-primary">
+            Book 45-Min Cat Cuddle Session
+          </a>
+          <button class="btn btn-secondary" onclick="showToast('🐾 Purring audio preview playing...'); window.soundEngine.play('fire');">
+            Listen to Warm Purr Audio
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ZONE 6: Silent Reading & Deep Sanctuary -->
+    <article class="zone-detail-card" id="zone-reading">
+      <div class="zone-detail-img-wrap">
+        <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=900&q=80" alt="The Silent Reading Sanctuary">
+        <span class="zone-tag">Zero-Distraction Flow</span>
+      </div>
+      <div class="zone-detail-body">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+            <h3 style="font-size: 1.6rem; font-weight: 800;">The Silent Reading & Deep Work Nook</h3>
+            <span style="color: #10B981; font-size: 0.82rem; font-weight: 700;">● Library Rules Active</span>
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem;">
+            Designed for writers, thinkers, and seekers of absolute calm. Strictly zero talking or phone calls. Furnished with genuine leather reading armchairs, warm brass task lamps, a curated library of poetry, philosophy, and botanical illustrations, plus a vintage mechanical typewriter for free-flow journaling.
+          </p>
+
+          <div class="sensory-specs-grid">
+            <div class="spec-item">
+              <span class="spec-label">Speech Policy</span>
+              <span class="spec-val">Strict Whisper / Silent Mode</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Wi-Fi Quality</span>
+              <span class="spec-val">Gigabit Fiber (Low Ping)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Power & Ergonomics</span>
+              <span class="spec-val">Wireless Chargers & Lumbar Pillows</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Library Access</span>
+              <span class="spec-val">500+ Hardcover Book Collection</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <a href="reservations.html?zone=reading" class="btn btn-primary">
+            Reserve Reading Armchair
+          </a>
+          <a href="menu.html" class="btn btn-secondary">
+            Pair with Matcha Elixir
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="brand-icon-wrap">☕</div>
+            <div>
+              <h3 class="brand-title">Dynamic Stress Buster</h3>
+              <span class="brand-subtitle">Artisan Cafe & Sanctuary</span>
+            </div>
+          </a>
+          <p>Every square foot is engineered to cradle your senses and protect your peace.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Sanctuary Pages</h4>
+          <ul class="footer-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu & Mood Matcher</a></li>
+            <li><a href="zones.html">The 6 De-Stress Zones</a></li>
+            <li><a href="events.html">Events & Workshops</a></li>
+            <li><a href="reservations.html">Reserve Table / Pod</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Pod Hygiene & Tech</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+            All pods feature automated UVC sterilization cycles between guests, fresh hypoallergenic linen slipcovers, and clean air filtration.
+          </p>
+        </div>
+        <div class="footer-newsletter">
+          <h4 class="footer-heading">Zone Priority Notifications</h4>
+          <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.75rem;">Get notified when peak weekend pod slots open up.</p>
+          <form onsubmit="event.preventDefault(); showToast('✨ Subscribed to pod availability alerts!'); this.reset();">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Get Alerts</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Dynamic Stress Buster Cafe. Physical Space Architecture.</div>
+        <div><a href="contact.html">Questions about sensory accommodations? Contact Us</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/stress-widget.js"></script>
+  <script src="js/menu-data.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

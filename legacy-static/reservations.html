@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve a Sanctuary Pod or Table — Dynamic Stress Buster Cafe</title>
+  <meta name="description" content="Book an ASMR pod, Zen garden table, or therapy cat session. Instant reservation confirmation with customized sensory aromatherapy add-ons.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .booking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .booking-wizard-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-medium);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+    }
+    .booking-summary-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-medium);
+      padding: 2rem;
+      position: sticky;
+      top: 100px;
+    }
+    .wizard-step-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.25rem;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .step-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--brand-amber);
+      color: #FFFFFF;
+      font-size: 0.84rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .zone-select-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+    .zone-radio-card {
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      background: var(--bg-card);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .zone-radio-card:hover {
+      border-color: var(--brand-caramel);
+    }
+    .zone-radio-card.active {
+      border-color: var(--brand-amber);
+      background: var(--bg-secondary);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+    .addon-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .addon-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--brand-amber);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon-wrap">☕</div>
+          <div>
+            <h1 class="brand-title">Dynamic Stress Buster</h1>
+            <span class="brand-subtitle">Artisan Cafe & Sanctuary</span>
+          </div>
+        </a>
+
+        <nav aria-label="Primary Navigation">
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="menu.html" class="nav-link">Menu & Mood Matcher</a></li>
+            <li><a href="zones.html" class="nav-link">De-Stress Zones</a></li>
+            <li><a href="events.html" class="nav-link">Events & Workshops</a></li>
+            <li><a href="reservations.html" class="nav-link active">Reserve a Pod</a></li>
+            <li><a href="about.html" class="nav-link">Our Story</a></li>
+            <li><a href="contact.html" class="nav-link">Visit & Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn-icon theme-toggle-btn" aria-label="Toggle Theme">🌙</button>
+          <a href="reservations.html" class="btn btn-primary">Book Table</a>
+          <button class="btn-icon mobile-toggle">&#9776;</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 3.5rem; padding-bottom: 5rem;">
+    
+    <!-- Title -->
+    <div style="text-align: center; max-width: 750px; margin: 0 auto 3rem;">
+      <span class="section-eyebrow">Zero Waiting • Zero Rush</span>
+      <h2 class="section-title">Reserve Your Sanctuary Space</h2>
+      <p class="section-desc">
+        Select your date, time, and ideal decompression zone. We prepare your seating, adjust lighting levels, and pre-warm your sensory blankets prior to your arrival.
+      </p>
+    </div>
+
+    <div class="booking-grid">
+      
+      <!-- Booking Wizard Form -->
+      <div class="booking-wizard-card">
+        <form id="reservationForm" onsubmit="handleReservationSubmit(event)">
+          
+          <!-- STEP 1: Date & Time -->
+          <div style="margin-bottom: 2.5rem;">
+            <div class="wizard-step-title">
+              <span class="step-badge">1</span>
+              <span>Select Date, Time & Duration</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 4px;">Date of Visit</label>
+                <input type="date" id="bookDate" required style="width: 100%; padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-surface); color: var(--text-primary); font-family: inherit;">
+              </div>
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 4px;">Time Slot</label>
+                <select id="bookTime" required style="width: 100%; padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-surface); color: var(--text-primary); font-family: inherit;">
+                  <option value="08:00 AM">08:00 AM — Morning Calm Session</option>
+                  <option value="10:30 AM">10:30 AM — Mid-Morning Tea & Focus</option>
+                  <option value="01:00 PM">01:00 PM — Midday Lunch Decompress</option>
+                  <option value="03:30 PM">03:30 PM — Afternoon Slump Antidote</option>
+                  <option value="06:00 PM">06:00 PM — Post-Work Mental Reset</option>
+                  <option value="08:30 PM">08:30 PM — Candlelight Lofi Hours</option>
+                  <option value="10:00 PM">10:00 PM — Midnight ASMR & Rain</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 4px;">Session Duration</label>
+                <select id="bookDuration" style="width: 100%; padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-surface); color: var(--text-primary); font-family: inherit;">
+                  <option value="60">60 Minutes</option>
+                  <option value="90" selected>90 Minutes (Recommended)</option>
+                  <option value="120">2 Hours (Deep Immersion)</option>
+                  <option value="240">4 Hours (Half-Day Sanctuary Pass)</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 4px;">Party Size</label>
+                <select id="bookParty" style="width: 100%; padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-surface); color: var(--text-primary); font-family: inherit;">
+                  <option value="1">1 Solo Seeker (Quiet Cocoon)</option>
+                  <option value="2">2 Guests (Cozy Pair)</option>
+                  <option value="3">3 - 4 Guests (Small Circle)</option>
+                  <option value="6">5 - 8 Guests (Private Lounge)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: Choose Sanctuary Zone -->
+          <div style="margin-bottom: 2.5rem;">
+            <div class="wizard-step-title">
+              <span class="step-badge">2</span>
+              <span>Choose Your Desired Zone</span>
+            </div>
+
+            <div class="zone-select-grid" id="zoneRadioGroup">
+              
+              <div class="zone-radio-card active" data-zone="asmr" data-price="12">
+                <div style="font-size: 1.5rem;">🎧</div>
+                <strong style="font-size: 0.95rem;">Private ASMR Pod</strong>
+                <span style="font-size: 0.74rem; color: var(--text-muted);">Soundproof cocoon & recliner</span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--brand-amber); margin-top: 4px;">+$12 / hr</span>
+              </div>
+
+              <div class="zone-radio-card" data-zone="zen" data-price="0">
+                <div style="font-size: 1.5rem;">🌿</div>
+                <strong style="font-size: 0.95rem;">Zen Terrarium Table</strong>
+                <span style="font-size: 0.74rem; color: var(--text-muted);">Moss wall & water stream</span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: #10B981; margin-top: 4px;">Free with order</span>
+              </div>
+
+              <div class="zone-radio-card" data-zone="pets" data-price="10">
+                <div style="font-size: 1.5rem;">🐾</div>
+                <strong style="font-size: 0.95rem;">Therapy Cat Lounge</strong>
+                <span style="font-size: 0.74rem; color: var(--text-muted);">Purring therapy sessions</span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--brand-amber); margin-top: 4px;">+$10 / person</span>
+              </div>
+
+              <div class="zone-radio-card" data-zone="reading" data-price="0">
+                <div style="font-size: 1.5rem;">📖</div>
+                <strong style="font-size: 0.95rem;">Silent Reading Chair</strong>
+                <span style="font-size: 0.74rem; color: var(--text-muted);">Whisper rules & plush leather</span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: #10B981; margin-top: 4px;">Free with order</span>
+              </div>
+
+              <div class="zone-radio-card" data-zone="boardgames" data-price="5">
+                <div style="font-size: 1.5rem;">🎲</div>
+                <strong style="font-size: 0.95rem;">Board Game Attic</strong>
+                <span style="font-size: 0.74rem; color: var(--text-muted);">200+ analog games</span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--brand-amber); margin-top: 4px;">+$5 table fee</span>
+              </div>
+
+              <div class="zone-radio-card" data-zone="tactile" data-price="0">
+                <div style="font-size: 1.5rem;">🫧</div>
+                <strong style="font-size: 0.95rem;">Tactile Release Studio</strong>
+                <span style="font-size: 0.74rem; color: var(--text-muted);">Sand, putty & bubble wall</span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: #10B981; margin-top: 4px;">Free with order</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- STEP 3: Sensory Customizations & Add-ons -->
+          <div style="margin-bottom: 2.5rem;">
+            <div class="wizard-step-title">
+              <span class="step-badge">3</span>
+              <span>Complimentary & Sensory Add-ons</span>
+            </div>
+
+            <label class="addon-item">
+              <div>
+                <strong>15-lb Lavender Weighted Lap Blanket</strong>
+                <div style="font-size: 0.76rem; color: var(--text-muted);">Deep Pressure Stimulation (DPS) to lower racing heart rate</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 0.75rem; color: #10B981; font-weight: 700;">Complimentary</span>
+                <input type="checkbox" id="addonBlanket" checked>
+              </div>
+            </label>
+
+            <label class="addon-item">
+              <div>
+                <strong>Tabletop Essential Oil Diffuser</strong>
+                <div style="font-size: 0.76rem; color: var(--text-muted);">Warm Japanese Hinoki Wood & Sweet Mandarin essence</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 0.75rem; color: #10B981; font-weight: 700;">Complimentary</span>
+                <input type="checkbox" id="addonDiffuser" checked>
+              </div>
+            </label>
+
+            <label class="addon-item">
+              <div>
+                <strong>Binaural Sound Headset Rental</strong>
+                <div style="font-size: 0.76rem; color: var(--text-muted);">Bose QuietComfort preloaded with 432Hz sleep frequencies</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 0.75rem; color: #10B981; font-weight: 700;">Complimentary</span>
+                <input type="checkbox" id="addonAudio" checked>
+              </div>
+            </label>
+
+            <label class="addon-item">
+              <div>
+                <strong>Arrival Treat: Lavender Oat Latte + Warm Truffle Croissant</strong>
+                <div style="font-size: 0.76rem; color: var(--text-muted);">Freshly prepared and placed at your table upon arrival</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 0.85rem; color: var(--brand-amber); font-weight: 700;">+$12.00</span>
+                <input type="checkbox" id="addonTreat" onchange="calculateSummary()">
+              </div>
+            </label>
+          </div>
+
+          <!-- STEP 4: Guest Contact Details -->
+          <div style="margin-bottom: 2rem;">
+            <div class="wizard-step-title">
+              <span class="step-badge">4</span>
+              <span>Guest Details & Comfort Notes</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 4px;">Your Full Name</label>
+                <input type="text" id="custName" required placeholder="Alex Rivera" style="width: 100%; padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-surface); color: var(--text-primary);">
+              </div>
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 4px;">Phone (for discreet SMS alert)</label>
+                <input type="tel" id="custPhone" required placeholder="+1 (555) 349-2810" style="width: 100%; padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-surface); color: var(--text-primary);">
+              </div>
+            </div>
+
+            <div>
+              <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 4px;">Email Address</label>
+              <input type="email" id="custEmail" required placeholder="alex.rivera@example.com" style="width: 100%; padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-surface); color: var(--text-primary); margin-bottom: 14px;">
+            </div>
+
+            <div>
+              <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 4px;">Special Sensory Preferences or Triggers (Optional)</label>
+              <input type="text" id="custNotes" placeholder="e.g. Prefer corner table, sensitive to incense, dim lights preferred..." style="width: 100%; padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-surface); color: var(--text-primary);">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1.05rem;">
+            Confirm My Sanctuary Booking ✨
+          </button>
+        </form>
+      </div>
+
+      <!-- Booking Summary Sidebar -->
+      <aside class="booking-summary-card">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px;">
+          Reservation Summary
+        </h3>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.88rem; margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--text-muted);">Selected Space:</span>
+            <strong id="summaryZoneName">Private ASMR Pod</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--text-muted);">Date & Time:</span>
+            <span id="summaryDateTime" style="font-weight: 600;">Today @ 08:30 PM</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--text-muted);">Duration & Guests:</span>
+            <span id="summaryDuration">90 Mins • 1 Guest</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--text-muted);">Sensory Add-ons:</span>
+            <span id="summaryAddons">Weighted Blanket, Diffuser</span>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-subtle); padding-top: 1rem; margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 800;">
+            <span>Total Due:</span>
+            <span id="summaryTotalFee" style="color: var(--brand-amber);">$12.00</span>
+          </div>
+          <p style="font-size: 0.74rem; color: var(--text-muted); margin-top: 4px;">
+            Zero upfront fee required. Free cancellation up to 1 hour before arrival.
+          </p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); font-size: 0.8rem; line-height: 1.6; border: 1px solid var(--border-subtle);">
+          <div style="font-weight: 700; color: #10B981; margin-bottom: 4px;">🌿 Sanctuary Guarantee</div>
+          Your reserved seat is held for 20 minutes past your booking time. You will receive a direct text with table number and door unlock code.
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Frequently Asked Questions -->
+    <section style="margin-top: 5rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+      <h3 style="font-size: 1.6rem; font-weight: 800; text-align: center; margin-bottom: 2rem;">Reservation FAQs</h3>
+      
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="background: var(--bg-card); padding: 1.25rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Are walk-ins welcome without a reservation?</h4>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+            Yes! Our Zen Terrarium, main espresso bar, and reading corners always retain 40% open seating for spontaneous walk-ins. However, the private ASMR Cocoon Pods and Therapy Cat sessions fill up quickly on weekends, so reservations are highly advised.
+          </p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 1.25rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-weight: 700; font-size: 1rem; margin-bottom: 6px;">What if I am running late?</h4>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+            We hold tables and pods for 20 minutes with zero penalties. Simply reply to your SMS confirmation text if you need an extra 15-minute grace period!
+          </p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 1.25rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Can I work on my laptop in the ASMR Pods?</h4>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+            Silent typing on laptops is completely allowed! However, all video calls or audio playback without headphones are strictly prohibited inside the pods and reading sanctuary to protect the collective tranquility.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Reservation Confirmation Modal -->
+  <div class="modal-overlay" id="confirmModal">
+    <div class="modal-box" style="max-width: 520px; text-align: center;">
+      <button class="modal-close" id="closeConfirmModalBtn">&times;</button>
+      
+      <div style="font-size: 3.5rem; margin-bottom: 8px;">✨</div>
+      <span class="vibe-tag">Booking Confirmed</span>
+      <h3 style="font-size: 1.8rem; font-weight: 800; margin: 4px 0 8px;">Your Sanctuary Is Ready!</h3>
+      <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+        We have reserved your pod and set up your personalized calming amenities.
+      </p>
+
+      <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-medium); text-align: left; margin-bottom: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.88rem;">
+          <span style="color: var(--text-muted);">Reservation Code:</span>
+          <strong id="modalResCode" style="color: var(--brand-amber); font-family: monospace; font-size: 1.05rem;">DSBC-7729</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.88rem;">
+          <span style="color: var(--text-muted);">Guest Name:</span>
+          <strong id="modalCustName">Alex Rivera</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.88rem;">
+          <span style="color: var(--text-muted);">Reserved Zone:</span>
+          <strong id="modalZone">Private ASMR Pod</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.88rem;">
+          <span style="color: var(--text-muted);">Time & Date:</span>
+          <strong id="modalSlot">Oct 12 @ 08:30 PM (90 Mins)</strong>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button class="btn btn-primary" onclick="showToast('📅 Added to your calendar simulator!');">
+          Add to Google / Apple Calendar 🗓️
+        </button>
+        <button class="btn btn-secondary" onclick="closeConfirmModal()">
+          Done & Return to Site
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="brand-icon-wrap">☕</div>
+            <div>
+              <h3 class="brand-title">Dynamic Stress Buster</h3>
+              <span class="brand-subtitle">Artisan Cafe & Sanctuary</span>
+            </div>
+          </a>
+          <p>Bookings engineered for zero friction, quiet arrivals, and guaranteed peace of mind.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Sanctuary Pages</h4>
+          <ul class="footer-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu & Mood Matcher</a></li>
+            <li><a href="zones.html">The 6 De-Stress Zones</a></li>
+            <li><a href="events.html">Events & Workshops</a></li>
+            <li><a href="reservations.html">Reserve a Pod</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Accessibility</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+            All areas are step-free and wheelchair accessible. Guide dogs are welcome in all zones except the therapy cat room.
+          </p>
+        </div>
+        <div class="footer-newsletter">
+          <h4 class="footer-heading">Instant Table Booking SMS</h4>
+          <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.75rem;">Text "CALM" to 555-CAFE-ZEN to hold the nearest open seat.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Dynamic Stress Buster Cafe. Reservation & Concierge Desk.</div>
+        <div><a href="contact.html">Need help with group reservations? Contact Us</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/stress-widget.js"></script>
+  <script src="js/menu-data.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Reservation Wizard Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set default date to today
+      const dateInput = document.getElementById('bookDate');
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.value = today;
+      dateInput.min = today;
+
+      // Handle zone URL params (e.g. ?zone=asmr)
+      const urlParams = new URLSearchParams(window.location.search);
+      const zoneParam = urlParams.get('zone');
+
+      const zoneCards = document.querySelectorAll('.zone-radio-card');
+      let selectedZone = 'asmr';
+      let selectedZonePrice = 12;
+      let selectedZoneName = 'Private ASMR Pod';
+
+      if (zoneParam) {
+        zoneCards.forEach(c => {
+          if (c.dataset.zone === zoneParam) {
+            zoneCards.forEach(card => card.classList.remove('active'));
+            c.classList.add('active');
+            selectedZone = zoneParam;
+            selectedZonePrice = parseFloat(c.dataset.price);
+            selectedZoneName = c.querySelector('strong').textContent;
+          }
+        });
+      }
+
+      zoneCards.forEach(card => {
+        card.addEventListener('click', () => {
+          zoneCards.forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+          selectedZone = card.dataset.zone;
+          selectedZonePrice = parseFloat(card.dataset.price);
+          selectedZoneName = card.querySelector('strong').textContent;
+          calculateSummary();
+          if (window.soundEngine) window.soundEngine.playPopSound(0.04, 600);
+        });
+      });
+
+      // Controls
+      const timeSelect = document.getElementById('bookTime');
+      const durationSelect = document.getElementById('bookDuration');
+      const partySelect = document.getElementById('bookParty');
+      const addonTreat = document.getElementById('addonTreat');
+
+      // Summary elements
+      const summaryZone = document.getElementById('summaryZoneName');
+      const summaryDateTime = document.getElementById('summaryDateTime');
+      const summaryDuration = document.getElementById('summaryDuration');
+      const summaryTotalFee = document.getElementById('summaryTotalFee');
+
+      function calculateSummary() {
+        summaryZone.textContent = selectedZoneName;
+        summaryDateTime.textContent = `${dateInput.value} @ ${timeSelect.value}`;
+        summaryDuration.textContent = `${durationSelect.value} Mins • ${partySelect.options[partySelect.selectedIndex].text}`;
+
+        let total = selectedZonePrice;
+        if (addonTreat.checked) total += 12;
+
+        summaryTotalFee.textContent = `$${total.toFixed(2)}`;
+      }
+
+      [dateInput, timeSelect, durationSelect, partySelect].forEach(el => {
+        el.addEventListener('change', calculateSummary);
+      });
+
+      calculateSummary();
+
+      // Modal handles
+      const confirmModal = document.getElementById('confirmModal');
+      const closeConfirmModalBtn = document.getElementById('closeConfirmModalBtn');
+      const modalResCode = document.getElementById('modalResCode');
+      const modalCustName = document.getElementById('modalCustName');
+      const modalZone = document.getElementById('modalZone');
+      const modalSlot = document.getElementById('modalSlot');
+
+      window.handleReservationSubmit = function(e) {
+        e.preventDefault();
+        const code = 'DSBC-' + Math.floor(1000 + Math.random() * 9000);
+        modalResCode.textContent = code;
+        modalCustName.textContent = document.getElementById('custName').value;
+        modalZone.textContent = selectedZoneName;
+        modalSlot.textContent = `${dateInput.value} @ ${timeSelect.value} (${durationSelect.value} Mins)`;
+
+        confirmModal.classList.add('active');
+        if (window.soundEngine) window.soundEngine.playChime(528);
+        showToast('✨ Reservation confirmed! We will see you soon.');
+      };
+
+      window.closeConfirmModal = function() {
+        confirmModal.classList.remove('active');
+      };
+
+      closeConfirmModalBtn.addEventListener('click', closeConfirmModal);
+      confirmModal.addEventListener('click', (e) => {
+        if (e.target === confirmModal) closeConfirmModal();
+      });
+    });
+  </script>
+
+</body>
+</html>

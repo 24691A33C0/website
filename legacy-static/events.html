@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events & Workshops — Dynamic Stress Buster Cafe</title>
+  <meta name="description" content="Experience mindful gatherings: Acoustic Candlelight Nights, 432Hz Singing Bowl Sound Baths, Clay Pottery Therapy, and Digital Detox Game Nights.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .event-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+    .event-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-amber);
+    }
+    .event-img-wrap {
+      height: 220px;
+      position: relative;
+    }
+    .event-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .event-date-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(250, 246, 240, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      color: var(--brand-espresso);
+      box-shadow: var(--shadow-sm);
+    }
+    [data-theme="dark"] .event-date-badge {
+      background: rgba(25, 18, 14, 0.95);
+      color: #FFFFFF;
+    }
+    .event-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .event-meta {
+      display: flex;
+      gap: 14px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .seats-bar {
+      height: 6px;
+      border-radius: var(--radius-full);
+      background: var(--bg-surface);
+      overflow: hidden;
+      margin: 1rem 0 1.25rem;
+    }
+    .seats-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--brand-matcha), var(--brand-amber));
+      border-radius: var(--radius-full);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon-wrap">☕</div>
+          <div>
+            <h1 class="brand-title">Dynamic Stress Buster</h1>
+            <span class="brand-subtitle">Artisan Cafe & Sanctuary</span>
+          </div>
+        </a>
+
+        <nav aria-label="Primary Navigation">
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="menu.html" class="nav-link">Menu & Mood Matcher</a></li>
+            <li><a href="zones.html" class="nav-link">De-Stress Zones</a></li>
+            <li><a href="events.html" class="nav-link active">Events & Workshops</a></li>
+            <li><a href="reservations.html" class="nav-link">Reserve a Pod</a></li>
+            <li><a href="about.html" class="nav-link">Our Story</a></li>
+            <li><a href="contact.html" class="nav-link">Visit & Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn-icon theme-toggle-btn" aria-label="Toggle Theme">🌙</button>
+          <a href="reservations.html" class="btn btn-primary">Book Table</a>
+          <button class="btn-icon mobile-toggle">&#9776;</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 3.5rem; padding-bottom: 5rem;">
+    
+    <!-- Hero / Header -->
+    <div style="text-align: center; max-width: 780px; margin: 0 auto 3.5rem;">
+      <span class="section-eyebrow">Collective Tranquility</span>
+      <h2 class="section-title">Mindful Gatherings & Sensory Workshops</h2>
+      <p class="section-desc">
+        Healing from stress doesn't have to be solitary. Join our intimate, small-group sessions guided by certified sound healers, ceramic artists, somatic practitioners, and master coffee roasters.
+      </p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 2.5rem; justify-content: center; flex-wrap: wrap;">
+      <button class="filter-tab active" data-filter="all">All Gatherings (6)</button>
+      <button class="filter-tab" data-filter="sound">🧘 Sound & Meditation</button>
+      <button class="filter-tab" data-filter="music">🎻 Acoustic & Candlelight</button>
+      <button class="filter-tab" data-filter="craft">🏺 Tactile Arts & Clay</button>
+      <button class="filter-tab" data-filter="tasting">☕ Coffee & Scent Cupping</button>
+      <button class="filter-tab" data-filter="games">🎲 Analog Game Socials</button>
+    </div>
+
+    <!-- Events Grid -->
+    <div class="zones-grid" id="eventsGrid">
+      
+      <!-- Event 1 -->
+      <article class="event-card" data-category="music">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Acoustic Candlelight Cello Night">
+          <div class="event-date-badge">
+            <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--brand-amber);">Thursday</div>
+            <div style="font-size: 1.25rem; font-weight: 800; line-height: 1;">8:00 PM</div>
+          </div>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span>⏱️ 90 Minutes</span>
+            <span>🕯️ 100% Candlelit</span>
+            <span>🍵 Herbal Tea Included</span>
+          </div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px;">Acoustic Candlelight Cello & Lofi Night</h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; flex-grow: 1;">
+            Live acoustic cello and gentle fingerstyle guitar woven with ambient rain sounds. Lit purely by 150 soy wax candles. Sip warm lavender chamomile tea and sink into deep relaxation.
+          </p>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 600;">
+              <span>Availability: <strong>4 seats left</strong></span>
+              <span style="color: var(--brand-amber);">$24 per ticket</span>
+            </div>
+            <div class="seats-bar">
+              <div class="seats-fill" style="width: 82%;"></div>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="openRsvpModal('Acoustic Candlelight Cello Night', 'Every Thursday at 8:00 PM', 24)" style="width: 100%;">
+            Reserve Spot (RSVP)
+          </button>
+        </div>
+      </article>
+
+      <!-- Event 2 -->
+      <article class="event-card" data-category="sound">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" alt="Tibetan Singing Bowl Sound Bath">
+          <div class="event-date-badge">
+            <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--brand-matcha);">Saturday</div>
+            <div style="font-size: 1.25rem; font-weight: 800; line-height: 1;">10:00 AM</div>
+          </div>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span>⏱️ 75 Minutes</span>
+            <span>🧘 Floor Yoga Mats</span>
+            <span>🔔 432Hz Tuning</span>
+          </div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px;">432Hz Tibetan Singing Bowl Sound Bath</h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; flex-grow: 1;">
+            Lie down on organic cotton floor futons inside our Zen Terrarium. Certified sound master Maya Lin plays antique 7-metal singing bowls and tuned gongs to re-synchronize delta brain waves.
+          </p>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 600;">
+              <span>Availability: <strong>6 spots left</strong></span>
+              <span style="color: var(--brand-amber);">$30 per person</span>
+            </div>
+            <div class="seats-bar">
+              <div class="seats-fill" style="width: 70%;"></div>
+            </div>
+          </div>
+          <button class="btn btn-matcha" onclick="openRsvpModal('432Hz Tibetan Singing Bowl Sound Bath', 'Saturday at 10:00 AM', 30)" style="width: 100%;">
+            Reserve Spot (RSVP)
+          </button>
+        </div>
+      </article>
+
+      <!-- Event 3 -->
+      <article class="event-card" data-category="craft">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=800&q=80" alt="Tactile Clay & Wheel Pottery Lab">
+          <div class="event-date-badge">
+            <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--brand-amber);">Tuesday</div>
+            <div style="font-size: 1.25rem; font-weight: 800; line-height: 1;">6:30 PM</div>
+          </div>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span>⏱️ 2 Hours</span>
+            <span>🏺 Keep Your Mug</span>
+            <span>🍵 Matcha Cloud Sip</span>
+          </div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px;">Tactile Clay & Mindful Pottery Lab</h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; flex-grow: 1;">
+            No experience needed. Dig your hands into wet earthen terracotta clay. Feel the kinetic grounding rhythm of the potter's wheel. We glaze and kiln-fire your handmade tea cup to take home.
+          </p>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 600;">
+              <span>Availability: <strong>2 wheels left</strong></span>
+              <span style="color: var(--brand-amber);">$42 (All Materials)</span>
+            </div>
+            <div class="seats-bar">
+              <div class="seats-fill" style="width: 90%;"></div>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="openRsvpModal('Tactile Clay & Mindful Pottery Lab', 'Tuesday at 6:30 PM', 42)" style="width: 100%;">
+            Reserve Spot (RSVP)
+          </button>
+        </div>
+      </article>
+
+      <!-- Event 4 -->
+      <article class="event-card" data-category="tasting">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Coffee Cupping & Aromatherapy">
+          <div class="event-date-badge">
+            <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--brand-amber);">Sunday</div>
+            <div style="font-size: 1.25rem; font-weight: 800; line-height: 1;">11:00 AM</div>
+          </div>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span>⏱️ 60 Minutes</span>
+            <span>👃 Olfactory Journey</span>
+            <span>☕ 5 Rare Single Origins</span>
+          </div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px;">Coffee Cupping & Olfactory Reset</h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; flex-grow: 1;">
+            Our sense of smell has a direct highway into the amygdala and hippocampus. Learn the mindful art of coffee sniffing, tasting notes of jasmine, peach, and cocoa, and discover coffee as meditation.
+          </p>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 600;">
+              <span>Availability: <strong>8 spots left</strong></span>
+              <span style="color: var(--brand-amber);">$18 per person</span>
+            </div>
+            <div class="seats-bar">
+              <div class="seats-fill" style="width: 60%;"></div>
+            </div>
+          </div>
+          <button class="btn btn-secondary" onclick="openRsvpModal('Coffee Cupping & Olfactory Reset', 'Sunday at 11:00 AM', 18)" style="width: 100%;">
+            Reserve Spot (RSVP)
+          </button>
+        </div>
+      </article>
+
+      <!-- Event 5 -->
+      <article class="event-card" data-category="games">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=800&q=80" alt="Analog Board Games Social">
+          <div class="event-date-badge">
+            <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--brand-amber);">Wednesday</div>
+            <div style="font-size: 1.25rem; font-weight: 800; line-height: 1;">7:00 PM</div>
+          </div>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span>⏱️ 2.5 Hours</span>
+            <span>📵 Zero Screens</span>
+            <span>🍪 Warm Cookies Free</span>
+          </div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px;">Unplugged Board Games & Strategy Social</h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; flex-grow: 1;">
+            Drop your phone at the door. Solo travelers and groups are paired up for non-competitive cooperative games (Wingspan, Cascadia, Codenames). Free fresh chocolate chip cookies baked on the hour.
+          </p>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 600;">
+              <span>Availability: <strong>12 spots left</strong></span>
+              <span style="color: var(--brand-amber);">$12 per person</span>
+            </div>
+            <div class="seats-bar">
+              <div class="seats-fill" style="width: 50%;"></div>
+            </div>
+          </div>
+          <button class="btn btn-secondary" onclick="openRsvpModal('Unplugged Board Games Social', 'Wednesday at 7:00 PM', 12)" style="width: 100%;">
+            Reserve Spot (RSVP)
+          </button>
+        </div>
+      </article>
+
+      <!-- Event 6 -->
+      <article class="event-card" data-category="sound">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" alt="Somatic Yoga Nidra">
+          <div class="event-date-badge">
+            <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--brand-matcha);">Monday</div>
+            <div style="font-size: 1.25rem; font-weight: 800; line-height: 1;">6:00 PM</div>
+          </div>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span>⏱️ 60 Minutes</span>
+            <span>🛏️ Zero Movement</span>
+            <span>🌙 Sleep Recovery</span>
+          </div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px;">Monday Reset: Somatic Yoga Nidra</h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; flex-grow: 1;">
+            Also known as "Yogic Sleep," 45 minutes of Yoga Nidra provides the neurological restorative benefits of 3 hours of deep REM sleep. Reset your nervous system before the week gets chaotic.
+          </p>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 600;">
+              <span>Availability: <strong>5 spots left</strong></span>
+              <span style="color: var(--brand-amber);">$20 per person</span>
+            </div>
+            <div class="seats-bar">
+              <div class="seats-fill" style="width: 75%;"></div>
+            </div>
+          </div>
+          <button class="btn btn-matcha" onclick="openRsvpModal('Monday Reset: Somatic Yoga Nidra', 'Monday at 6:00 PM', 20)" style="width: 100%;">
+            Reserve Spot (RSVP)
+          </button>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Private Corporate / Group Booking Section -->
+    <section style="margin-top: 5rem; background: var(--bg-card); border-radius: var(--radius-lg); padding: 3rem; border: 1px solid var(--border-medium); box-shadow: var(--shadow-md);">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+        <div>
+          <span class="vibe-tag">Team Wellness & Retreats</span>
+          <h3 style="font-size: 2rem; font-weight: 800; margin: 0.5rem 0 1rem; line-height: 1.2;">
+            Host a "Corporate De-Stress Retreat" For Your Team
+          </h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+            Is your company facing deadline burnout, high turnover, or exhausted teams? Rent our entire sanctuary or a private wing for an afternoon of acoustic rest, adaptogenic coffee tastings, and screen-free wellness.
+          </p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1.5rem;">
+            <li>✓ Full access to all 6 De-Stress Zones & ASMR Pods</li>
+            <li>✓ Unlimited adaptogenic drinks & artisan catering trays</li>
+            <li>✓ Guided group breathwork or sound bath session</li>
+            <li>✓ Accommodates groups from 8 to 65 team members</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--bg-surface); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-weight: 700; margin-bottom: 1rem;">Inquire About Private Retreat</h4>
+          <form onsubmit="event.preventDefault(); showToast('✨ Inquiry submitted! Our events concierge will reach out within 4 hours.'); this.reset();" style="display: flex; flex-direction: column; gap: 12px;">
+            <input type="text" placeholder="Your Name or Company" required style="padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-card); color: var(--text-primary);">
+            <input type="email" placeholder="Corporate / Work Email" required style="padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-card); color: var(--text-primary);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <select style="padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-card); color: var(--text-primary);">
+                <option>Team Size: 8 - 15</option>
+                <option>Team Size: 16 - 35</option>
+                <option>Full Cafe Buyout (35 - 65)</option>
+              </select>
+              <input type="date" required style="padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-card); color: var(--text-primary);">
+            </div>
+            <textarea placeholder="Special wellness requests or objectives..." rows="3" style="padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-card); color: var(--text-primary);"></textarea>
+            <button type="submit" class="btn btn-primary" style="margin-top: 4px;">Submit Retreat Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Event RSVP Modal -->
+  <div class="modal-overlay" id="rsvpModal">
+    <div class="modal-box" style="max-width: 480px;">
+      <button class="modal-close" id="closeRsvpModalBtn">&times;</button>
+      <span class="vibe-tag">Workshop Registration</span>
+      <h3 id="modalEventName" style="font-size: 1.5rem; font-weight: 800; margin-top: 4px;">Acoustic Candlelight Cello Night</h3>
+      <p id="modalEventTime" style="font-size: 0.86rem; color: var(--brand-amber); font-weight: 700; margin: 4px 0 1.25rem;">
+        Every Thursday at 8:00 PM
+      </p>
+
+      <form id="rsvpForm" onsubmit="handleRsvpSubmit(event)" style="display: flex; flex-direction: column; gap: 12px;">
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Full Name</label>
+          <input type="text" id="rsvpName" required placeholder="Elena Vance" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-surface); color: var(--text-primary); margin-top: 4px;">
+        </div>
+
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Email for Confirmation Ticket</label>
+          <input type="email" id="rsvpEmail" required placeholder="elena@example.com" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-surface); color: var(--text-primary); margin-top: 4px;">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">Number of Guests</label>
+            <select id="rsvpGuests" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); background: var(--bg-surface); color: var(--text-primary); margin-top: 4px;">
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">Ticket Price</label>
+            <div id="rsvpPriceDisplay" style="padding: 10px; font-weight: 800; color: var(--brand-amber); font-size: 1.1rem; margin-top: 4px;">$24.00</div>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-surface); padding: 12px; border-radius: var(--radius-sm); font-size: 0.78rem; color: var(--text-secondary);">
+          🍵 Includes complimentary adaptogenic herbal tea flight and reserved meditation cushions. Pay at check-in or online.
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 8px;">
+          Confirm RSVP & Issue Ticket
+        </button>
+      </form>
+
+      <!-- Confirmation Receipt Screen -->
+      <div id="rsvpSuccessBox" style="display: none; text-align: center; padding: 1.5rem 0;">
+        <span style="font-size: 3rem;">🎟️</span>
+        <h4 style="font-size: 1.4rem; font-weight: 800; margin: 8px 0;">Spot Confirmed!</h4>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          Your digital pass has been issued. An SMS & email reminder will arrive 24 hours prior.
+        </p>
+        <div style="background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-md); font-family: monospace; font-size: 0.95rem; font-weight: 700; color: var(--brand-amber); margin-bottom: 1.25rem;">
+          PASS CODE: DSBC-<span id="rsvpCode">8849</span>
+        </div>
+        <button class="btn btn-secondary" onclick="closeRsvpModal()" style="width: 100%;">
+          Close Window
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="brand-icon-wrap">☕</div>
+            <div>
+              <h3 class="brand-title">Dynamic Stress Buster</h3>
+              <span class="brand-subtitle">Artisan Cafe & Sanctuary</span>
+            </div>
+          </a>
+          <p>Community events dedicated to restoring nervous system resilience through music, art, and mindfulness.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Sanctuary Pages</h4>
+          <ul class="footer-nav">
+            <li><a href="index.html">Home Overview</a></li>
+            <li><a href="menu.html">Menu & Mood Matcher</a></li>
+            <li><a href="zones.html">The 6 De-Stress Zones</a></li>
+            <li><a href="events.html">Events & Workshops</a></li>
+            <li><a href="reservations.html">Reserve Table / Pod</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Cancellation Policy</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+            Tickets are 100% refundable up to 4 hours before the event starts. We want zero stress in your life, including booking commitments!
+          </p>
+        </div>
+        <div class="footer-newsletter">
+          <h4 class="footer-heading">Monthly Workshop Calendar</h4>
+          <form onsubmit="event.preventDefault(); showToast('✨ Subscribed to monthly workshop calendar!'); this.reset();">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Receive Calendar</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Dynamic Stress Buster Cafe. Events & Cultural Programming.</div>
+        <div><a href="contact.html">Want to host or teach a workshop? Pitch our curator</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/stress-widget.js"></script>
+  <script src="js/menu-data.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Filter & RSVP Modal Logic -->
+  <script>
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const eventCards = document.querySelectorAll('.event-card');
+    const rsvpModal = document.getElementById('rsvpModal');
+    const closeRsvpBtn = document.getElementById('closeRsvpModalBtn');
+    const modalEventName = document.getElementById('modalEventName');
+    const modalEventTime = document.getElementById('modalEventTime');
+    const rsvpPriceDisplay = document.getElementById('rsvpPriceDisplay');
+    const rsvpGuests = document.getElementById('rsvpGuests');
+    const rsvpForm = document.getElementById('rsvpForm');
+    const rsvpSuccessBox = document.getElementById('rsvpSuccessBox');
+    const rsvpCode = document.getElementById('rsvpCode');
+
+    let currentBasePrice = 24;
+
+    // Filter events
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        eventCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // RSVP modal
+    window.openRsvpModal = function(name, time, price) {
+      modalEventName.textContent = name;
+      modalEventTime.textContent = time;
+      currentBasePrice = price;
+      updatePrice();
+      rsvpForm.style.display = 'flex';
+      rsvpSuccessBox.style.display = 'none';
+      rsvpModal.classList.add('active');
+    };
+
+    window.closeRsvpModal = function() {
+      rsvpModal.classList.remove('active');
+    };
+
+    closeRsvpBtn.addEventListener('click', closeRsvpModal);
+    rsvpModal.addEventListener('click', (e) => {
+      if (e.target === rsvpModal) closeRsvpModal();
+    });
+
+    rsvpGuests.addEventListener('change', updatePrice);
+
+    function updatePrice() {
+      const count = parseInt(rsvpGuests.value) || 1;
+      const total = currentBasePrice * count;
+      rsvpPriceDisplay.textContent = `$${total.toFixed(2)}`;
+    }
+
+    window.handleRsvpSubmit = function(e) {
+      e.preventDefault();
+      const code = Math.floor(1000 + Math.random() * 9000);
+      rsvpCode.textContent = code;
+      rsvpForm.style.display = 'none';
+      rsvpSuccessBox.style.display = 'block';
+      if (window.soundEngine) window.soundEngine.playChime(528);
+      showToast('🎉 Ticket successfully issued!');
+    };
+  </script>
+
+</body>
+</html>

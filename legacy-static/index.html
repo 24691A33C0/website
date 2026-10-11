@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Stress Buster Cafe — Unwind Your Mind, One Sip at a Time</title>
+  <meta name="description" content="A premium sanctuary cafe blending artisan adaptogenic coffee, cozy sensory zones, ASMR pods, and calming ambiance designed to melt your stress away.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Ambient Status Ticker -->
+  <aside class="ambient-ticker" aria-label="Live Cafe Atmosphere Status">
+    <div class="container">
+      <div class="ticker-wrap">
+        <span class="ticker-pill"><span class="pulse-dot"></span> <strong>Live Sanctuary Status:</strong> Open & Calm (Crowd: 34%)</span>
+        <span class="ticker-pill">🌿 <strong>Aroma Profile:</strong> Roasted Hazelnut & Wild French Lavender</span>
+        <span class="ticker-pill">🎧 <strong>In-House Soundscape:</strong> Tokyo Rain & 432Hz Lofi Beats</span>
+        <span class="ticker-pill">☕ <strong>Daily Brew:</strong> Ethiopian Yirgacheffe with Ashwagandha</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="brand-logo" aria-label="Dynamic Stress Buster Cafe Home">
+          <div class="brand-icon-wrap">☕</div>
+          <div>
+            <h1 class="brand-title">Dynamic Stress Buster</h1>
+            <span class="brand-subtitle">Artisan Cafe & Sanctuary</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav aria-label="Primary Navigation">
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="menu.html" class="nav-link">Menu & Mood Matcher</a></li>
+            <li><a href="zones.html" class="nav-link">De-Stress Zones</a></li>
+            <li><a href="events.html" class="nav-link">Events & Workshops</a></li>
+            <li><a href="reservations.html" class="nav-link">Reserve a Pod</a></li>
+            <li><a href="about.html" class="nav-link">Our Story</a></li>
+            <li><a href="contact.html" class="nav-link">Visit & Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <button class="btn-icon theme-toggle-btn" aria-label="Toggle Dark/Light Mode">🌙</button>
+          <a href="reservations.html" class="btn btn-primary" style="display: inline-flex;">Book Table</a>
+          <button class="btn-icon mobile-toggle" aria-label="Toggle Mobile Navigation menu">&#9776;</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Text -->
+          <div>
+            <span class="hero-badge">
+              <span>✨</span> The World's First Sensory Stress-Relief Cafe
+            </span>
+            <h2 class="hero-title">
+              Where <span class="text-gradient">Deep Rest</span> Meets Artisan Roast.
+            </h2>
+            <p class="hero-lead">
+              Step off the frantic treadmill of daily life. At Dynamic Stress Buster Cafe, we pair scientifically crafted adaptogenic coffees with sensory de-stress zones, private ASMR pods, and calming soundscapes to recalibrate your mind.
+            </p>
+            
+            <div class="hero-cta-group">
+              <a href="menu.html" class="btn btn-primary">
+                <span>Browse Menu & Mood Matcher</span>
+                <span>→</span>
+              </a>
+              <a href="zones.html" class="btn btn-secondary">
+                <span>Explore Relaxation Zones</span>
+              </a>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat-item">
+                <h4>6</h4>
+                <p>Curated Zones</p>
+              </div>
+              <div class="stat-item">
+                <h4>100%</h4>
+                <p>Organic & Fair-Trade</p>
+              </div>
+              <div class="stat-item">
+                <h4>4.9 ★</h4>
+                <p>Over 2,400+ Unwound Minds</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Visual & Live Atmosphere Card -->
+          <div>
+            <div class="hero-visual-card">
+              <div class="hero-image-wrap">
+                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80" alt="Warm cozy ambiance at Dynamic Stress Buster Cafe">
+              </div>
+              <div class="hero-overlay-card">
+                <div class="overlay-header">
+                  <span class="vibe-tag">Sensory Sanctuary</span>
+                  <span style="font-size: 0.82rem; font-weight: 600; color: #10B981;">● Calming Vibes Active</span>
+                </div>
+                <h3 class="vibe-title">The Rain & Lofi Fireplace Corner</h3>
+                <p class="vibe-desc">
+                  Sink into plush bouclé velvet chairs, breathe in warm cedarwood and lavender, and let our soundscapes melt tension away.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Mood Selector Bar -->
+    <section class="mood-bar-section">
+      <div class="container">
+        <div class="mood-bar-card">
+          <div class="mood-bar-header">
+            <div>
+              <span class="section-eyebrow">Interactive Relief</span>
+              <h3>How are you feeling right now?</h3>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 440px;">
+              Tap your current emotional state to discover your customized beverage and decompression zone recommendation.
+            </p>
+          </div>
+
+          <div class="mood-buttons-grid">
+            <button class="mood-btn" data-mood="burnout">
+              <span class="mood-icon">🔥</span>
+              <span class="mood-name">Burned Out</span>
+              <span class="mood-hint">Mental depletion & overload</span>
+            </button>
+            <button class="mood-btn" data-mood="anxious">
+              <span class="mood-icon">⚡</span>
+              <span class="mood-name">Anxious & Jittery</span>
+              <span class="mood-hint">Racing heart, restless mind</span>
+            </button>
+            <button class="mood-btn" data-mood="brainfog">
+              <span class="mood-icon">🌫️</span>
+              <span class="mood-name">Heavy Brain Fog</span>
+              <span class="mood-hint">Sluggish focus & fatigue</span>
+            </button>
+            <button class="mood-btn" data-mood="heartbroken">
+              <span class="mood-icon">💔</span>
+              <span class="mood-name">Tired & Tender</span>
+              <span class="mood-hint">Need emotional comfort & warmth</span>
+            </button>
+            <button class="mood-btn" data-mood="creative">
+              <span class="mood-icon">🎨</span>
+              <span class="mood-name">Creative Slump</span>
+              <span class="mood-hint">Seeking fresh inspiration</span>
+            </button>
+          </div>
+
+          <!-- Dynamic recommendation display -->
+          <div class="mood-result-preview" id="quickMoodResult" style="display: none;">
+            <div>
+              <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--brand-amber); letter-spacing: 0.05em;">Personalized Prescription</span>
+              <h4 id="quickRecTitle" style="font-size: 1.15rem; font-weight: 700; margin: 2px 0;">Vanilla Oat Cortado + ASMR Lofi Pod</h4>
+              <p id="quickRecDesc" style="font-size: 0.86rem; color: var(--text-secondary); max-width: 600px;">
+                Rich L-Theanine and Ashwagandha to stabilize your central nervous system while sinking into acoustic isolation.
+              </p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <a href="menu.html" class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.84rem;">View on Menu</a>
+              <a href="reservations.html" class="btn btn-primary" style="padding: 6px 16px; font-size: 0.84rem;">Book Zone</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Experience Zones Preview -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Physical Architecture</span>
+          <h2 class="section-title">Designed From Ground Up to Reset Your Nervous System</h2>
+          <p class="section-desc">
+            We don't just sell coffee — we provide tailored environments. From silent acoustic pods to tactile smash rooms and therapy cat lounges, choose the sensory intensity that fits your mood.
+          </p>
+        </div>
+
+        <div class="zones-grid">
+          
+          <!-- Zone 1 -->
+          <article class="zone-card">
+            <div class="zone-card-image">
+              <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80" alt="The Zen Terrarium & Sound Garden">
+              <span class="zone-tag">Nature Immersion</span>
+            </div>
+            <div class="zone-card-body">
+              <h3 class="zone-card-title">The Zen Terrarium & Sound Garden</h3>
+              <p class="zone-card-desc">
+                Surrounded by live moss walls, cascading water streams, and Japanese bonsai. Equipped with high-fidelity noise-canceling headphones playing binaural 432Hz ambient soundscapes.
+              </p>
+              <div class="zone-perks">
+                <span class="perk-pill">Living Moss Wall</span>
+                <span class="perk-pill">Water Trickle Therapy</span>
+                <span class="perk-pill">Binaural Audio</span>
+              </div>
+              <a href="zones.html" class="btn btn-secondary" style="margin-top: auto;">Explore Zone Details →</a>
+            </div>
+          </article>
+
+          <!-- Zone 2 -->
+          <article class="zone-card">
+            <div class="zone-card-image">
+              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="The Lofi & ASMR Pods">
+              <span class="zone-tag">Deep Solitude</span>
+            </div>
+            <div class="zone-card-body">
+              <h3 class="zone-card-title">Private ASMR & Lofi Cocoon Pods</h3>
+              <p class="zone-card-desc">
+                Acoustically isolated soundproof pods with adjustable ambient amber lighting, weighted velvet lap blankets, ergonomic zero-gravity recliners, and private tea docks.
+              </p>
+              <div class="zone-perks">
+                <span class="perk-pill">Soundproof Acoustic Isolation</span>
+                <span class="perk-pill">Weighted Blankets</span>
+                <span class="perk-pill">Zero-Gravity Seating</span>
+              </div>
+              <a href="zones.html" class="btn btn-secondary" style="margin-top: auto;">Explore Zone Details →</a>
+            </div>
+          </article>
+
+          <!-- Zone 3 -->
+          <article class="zone-card">
+            <div class="zone-card-image">
+              <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=800&q=80" alt="The Tactile Release & Bubble Corner">
+              <span class="zone-tag">Play Therapy</span>
+            </div>
+            <div class="zone-card-body">
+              <h3 class="zone-card-title">The Tactile Release & Bubble Wall</h3>
+              <p class="zone-card-desc">
+                Got pent-up physical frustration? Step into our sensory release zone with infinite reusable bubble wrap sheets, kinetic sand sandboxes, stress putty bar, and scribble walls.
+              </p>
+              <div class="zone-perks">
+                <span class="perk-pill">Bubble Wrap Walls</span>
+                <span class="perk-pill">Kinetic Sand Bar</span>
+                <span class="perk-pill">Stress Putty</span>
+              </div>
+              <a href="zones.html" class="btn btn-secondary" style="margin-top: auto;">Explore Zone Details →</a>
+            </div>
+          </article>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="zones.html" class="btn btn-primary">Discover All 6 Experience Zones →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Signature Menu Highlights -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Neuro-Nutrition & Craft</span>
+          <h2 class="section-title">Menu Infused with Adaptogens & Comfort</h2>
+          <p class="section-desc">
+            Every beverage and bite is formulated with clinical herbalists to harmonize your brain chemistry, eliminate caffeine jitters, and provide profound mental ease.
+          </p>
+        </div>
+
+        <div class="menu-showcase-grid">
+          
+          <!-- Item 1 -->
+          <article class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=700&q=80" alt="Smoked Honey & Lavender Latte">
+              <span class="benefit-pill">Vagus Nerve Calmer</span>
+            </div>
+            <div class="menu-card-content">
+              <div class="menu-card-header">
+                <h3 class="menu-title">Smoked Honey Lavender Latte</h3>
+                <span class="menu-price">$6.75</span>
+              </div>
+              <p class="menu-desc">
+                French culinary lavender infused with raw wildflower honey and microfoamed oat milk over single-origin espresso.
+              </p>
+              <button class="btn btn-secondary" onclick="addToCart('m2')" style="width: 100%; font-size: 0.85rem;">
+                + Add to Tray
+              </button>
+            </div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=700&q=80" alt="Ceremonial Matcha L-Theanine Cloud">
+              <span class="benefit-pill">Alpha-Wave Focus</span>
+            </div>
+            <div class="menu-card-content">
+              <div class="menu-card-header">
+                <h3 class="menu-title">Matcha L-Theanine Cloud</h3>
+                <span class="menu-price">$7.25</span>
+              </div>
+              <p class="menu-desc">
+                First-harvest Uji matcha hand-whisked with lion’s mane mushroom extract and cold vanilla foam.
+              </p>
+              <button class="btn btn-secondary" onclick="addToCart('m5')" style="width: 100%; font-size: 0.85rem;">
+                + Add to Tray
+              </button>
+            </div>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=700&q=80" alt="Reishi Cacao Nightcap">
+              <span class="benefit-pill">Cortisol Antidote</span>
+            </div>
+            <div class="menu-card-content">
+              <div class="menu-card-header">
+                <h3 class="menu-title">Reishi Cacao Nightcap</h3>
+                <span class="menu-price">$6.95</span>
+              </div>
+              <p class="menu-desc">
+                Heirloom Ecuadorian cacao with red Reishi mushroom, Ceylon cinnamon, and warmed coconut milk.
+              </p>
+              <button class="btn btn-secondary" onclick="addToCart('m6')" style="width: 100%; font-size: 0.85rem;">
+                + Add to Tray
+              </button>
+            </div>
+          </article>
+
+          <!-- Item 4 -->
+          <article class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=700&q=80" alt="Truffle Cheddar Sourdough Melt">
+              <span class="benefit-pill">Endorphin Comfort</span>
+            </div>
+            <div class="menu-card-content">
+              <div class="menu-card-header">
+                <h3 class="menu-title">Truffle & Cheddar Melt</h3>
+                <span class="menu-price">$11.50</span>
+              </div>
+              <p class="menu-desc">
+                Slow-fermented artisan sourdough, aged sharp cheddar, gruyère, black truffle paste, and caramelized onion jam.
+              </p>
+              <button class="btn btn-secondary" onclick="addToCart('m11')" style="width: 100%; font-size: 0.85rem;">
+                + Add to Tray
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="menu.html" class="btn btn-primary">Open Full Menu & AI Mood Matcher →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Science of Stress Relief (4 Pillars) -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">The Science Behind It</span>
+          <h2 class="section-title">Why Our Environment Heals Burnout</h2>
+          <p class="section-desc">
+            We combined insights from neurobiology, architectural psychology, and herbal adaptogens to reverse chronic sympathetic nervous system activation.
+          </p>
+        </div>
+
+        <div class="science-grid">
+          
+          <div class="science-card">
+            <span class="science-number">01</span>
+            <div class="science-icon">🌿</div>
+            <h4>Biophilic Architecture</h4>
+            <p>
+              Over 300 living plants, natural stone, and filtered skylights stimulate the parasympathetic nervous system, lowering heart rate within 3 minutes of entry.
+            </p>
+          </div>
+
+          <div class="science-card">
+            <span class="science-number">02</span>
+            <div class="science-icon">🍄</div>
+            <h4>Adaptogenic Synergy</h4>
+            <p>
+              Clinical dosages of Ashwagandha, Lion's Mane, and L-Theanine buffer the cortisol spike usually caused by caffeine, delivering clear focus without agitation.
+            </p>
+          </div>
+
+          <div class="science-card">
+            <span class="science-number">03</span>
+            <div class="science-icon">🎧</div>
+            <h4>Acoustic Decompression</h4>
+            <p>
+              Specially tuned 432Hz soundscapes, soft wood paneling, and acoustic soundproofing neutralize disruptive city noise and harsh sensory frequencies.
+            </p>
+          </div>
+
+          <div class="science-card">
+            <span class="science-number">04</span>
+            <div class="science-icon">🧩</div>
+            <h4>Tactile & Play Therapy</h4>
+            <p>
+              Engaging hands with non-digital textures—bubble wrap, kinetic sand, ceramic cups, physical board games—pulls attention away from stressful screen loops.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials / Wall of Relief -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Visitor Experiences</span>
+          <h2 class="section-title">Words From Unwound Souls</h2>
+          <p class="section-desc">
+            See how guests transition from frantic workdays to deep tranquility.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-quote">
+                "I arrived at 3 PM with a severe migraine from back-to-back Zoom meetings. Booked a 1-hour ASMR pod, had their Lavender Latte, and used the weighted blanket. I walked out feeling like a completely reborn human."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Elena Rostova" class="author-avatar">
+              <div class="author-info">
+                <h5>Elena Rostova</h5>
+                <span>Product Designer, Tech Lead</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-quote">
+                "As someone prone to caffeine jitters, their Ashwagandha Cortado is a medical marvel. Tastes like heaven and zero anxiety. Plus, the tactile bubble wrap wall gave me the best laugh I've had all month."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Marcus Chen" class="author-avatar">
+              <div class="author-info">
+                <h5>Marcus Chen</h5>
+                <span>Architectural Consultant</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-quote">
+                "Dynamic Stress Buster is my weekly ritual. My partner and I spend Sunday mornings in the Zen Terrarium playing chess. The music, the staff, and the aroma make you forget the outside world entirely."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80" alt="Sarah & David" class="author-avatar">
+              <div class="author-info">
+                <h5>Sarah & David K.</h5>
+                <span>Local Members</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- VIP Stress-Free Pass Banner -->
+    <section style="padding: 2rem 0 5rem;">
+      <div class="container">
+        <div style="background: linear-gradient(135deg, var(--brand-espresso), #3d2315); border-radius: var(--radius-lg); padding: 3.5rem 2.5rem; color: #FFFFFF; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; box-shadow: var(--shadow-lg); position: relative; overflow: hidden;">
+          <div style="position: absolute; right: -50px; bottom: -50px; font-size: 14rem; opacity: 0.05; pointer-events: none;">☕</div>
+          <div style="max-width: 580px; position: relative; z-index: 1;">
+            <span style="background: rgba(217, 119, 36, 0.3); border: 1px solid var(--brand-amber); color: #FBBF24; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Membership Club</span>
+            <h3 style="font-size: 2.2rem; font-family: 'Playfair Display', serif; margin: 1rem 0 0.75rem; font-weight: 800; line-height: 1.2;">Join the "Stress-Free Society"</h3>
+            <p style="color: #E5D5C5; font-size: 0.95rem; line-height: 1.6;">
+              Enjoy complimentary priority ASMR pod bookings, 15% off adaptogenic elixirs, free admission to acoustic candlelight nights, and monthly sensory wellness care packages.
+            </p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px; position: relative; z-index: 1;">
+            <a href="reservations.html" class="btn btn-primary" style="background: linear-gradient(135deg, #F59E0B, #D97724); color: #1F1610; font-weight: 700;">
+              Get My De-Stress Pass
+            </a>
+            <span style="font-size: 0.75rem; color: #C7B7A6; text-align: center;">No lock-in contracts. Cancel anytime.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="brand-icon-wrap">☕</div>
+            <div>
+              <h3 class="brand-title">Dynamic Stress Buster</h3>
+              <span class="brand-subtitle">Artisan Cafe & Sanctuary</span>
+            </div>
+          </a>
+          <p>
+            An urban haven designed to restore tranquility, balance nervous systems, and elevate daily coffee into an act of self-care.
+          </p>
+          <div style="display: flex; gap: 12px; margin-top: 1.2rem; font-size: 1.2rem;">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="Spotify Playlists">🎵</a>
+            <a href="#" aria-label="YouTube ASMR">📺</a>
+            <a href="#" aria-label="Pinterest Boards">📌</a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="footer-heading">Sanctuary Pages</h4>
+          <ul class="footer-nav">
+            <li><a href="index.html">Home Overview</a></li>
+            <li><a href="menu.html">Artisan Menu & Mood Matcher</a></li>
+            <li><a href="zones.html">The 6 De-Stress Zones</a></li>
+            <li><a href="events.html">Workshops & Events</a></li>
+            <li><a href="reservations.html">Reserve Table / Pod</a></li>
+            <li><a href="about.html">The Neuroscience & Story</a></li>
+            <li><a href="contact.html">Visit & Hours</a></li>
+          </ul>
+        </div>
+
+        <!-- Hours & Sanctuary Times -->
+        <div>
+          <h4 class="footer-heading">Sanctuary Hours</h4>
+          <ul class="hours-list">
+            <li><span>Mon – Fri:</span> <strong>7:00 AM – 10:30 PM</strong></li>
+            <li><span>Saturday:</span> <strong>8:00 AM – 11:30 PM</strong></li>
+            <li><span>Sunday:</span> <strong>8:00 AM – 10:00 PM</strong></li>
+            <li><span>Silent ASMR Pods:</span> <em>Open till Midnight</em></li>
+          </ul>
+          <div style="margin-top: 1.2rem; font-size: 0.82rem; color: var(--brand-amber);">
+            🌿 Quiet hours: 8 PM – Close daily
+          </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-newsletter">
+          <h4 class="footer-heading">Mindful Weekly Digest</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+            Receive curated calming playlists, meditation tips, and exclusive event invitations.
+          </p>
+          <form onsubmit="event.preventDefault(); showToast('✨ You are subscribed to our calm newsletter!'); this.reset();">
+            <input type="email" placeholder="Enter your email" required aria-label="Email address">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe for Calm</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Dynamic Stress Buster Cafe. All rights reserved. Designed for inner peace.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Sensory Accessibility</a>
+          <a href="#">Pet Safety Guidelines</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/stress-widget.js"></script>
+  <script src="js/menu-data.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Homepage Quick Mood Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const moodBtns = document.querySelectorAll('.mood-btn');
+      const moodResult = document.getElementById('quickMoodResult');
+      const recTitle = document.getElementById('quickRecTitle');
+      const recDesc = document.getElementById('quickRecDesc');
+
+      const recommendations = {
+        burnout: {
+          title: 'Reishi Cacao Nightcap + The ASMR Lofi Pod',
+          desc: 'Clinically proven Reishi to lower cortisol and melt systemic fatigue, paired with silent acoustic pod cocooning.'
+        },
+        anxious: {
+          title: 'Vanilla Oat Cortado with Ashwagandha + Zen Terrarium',
+          desc: 'High L-theanine and KSM-66 Ashwagandha to quiet mental chatter, set to gentle water trickles and moss garden.'
+        },
+        brainfog: {
+          title: 'Ceremonial Matcha L-Theanine Cloud + Reading Sanctuary',
+          desc: 'Lion’s mane mushroom essence providing 4+ hours of jitter-free alpha-wave mental clarity in ergonomic armchairs.'
+        },
+        heartbroken: {
+          title: 'Truffle Cheddar Sourdough Melt + Warm Fireplace Nook',
+          desc: 'Rich comforting carbs, melted aged gruyère, and a warm hearth crackle to wrap your soul in emotional comfort.'
+        },
+        creative: {
+          title: 'Sparkling Yuzu Cold Brew Tonic + Tactile Sand & Puzzle Loft',
+          desc: 'Zesty Japanese citrus and dopamine-boosting cold brew paired with non-digital puzzles to unlock intuitive breakthroughs.'
+        }
+      };
+
+      moodBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          moodBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const mood = btn.dataset.mood;
+          if (recommendations[mood]) {
+            recTitle.textContent = recommendations[mood].title;
+            recDesc.textContent = recommendations[mood].desc;
+            moodResult.style.display = 'flex';
+            if (window.soundEngine) window.soundEngine.playChime(528);
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
